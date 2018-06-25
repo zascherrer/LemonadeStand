@@ -13,7 +13,7 @@ namespace LemonadeStand
         {
             name = "Ice Cube";
             canSpoil = true;
-            count = 0;
+            count = 100;
             price = 0.01;
             spoilageChance = 1.00;
         }

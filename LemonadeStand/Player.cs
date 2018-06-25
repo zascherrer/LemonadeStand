@@ -9,8 +9,9 @@ namespace LemonadeStand
     class Player
     {
         public string name;
-        private double money;
-        private Inventory inventory;
+        public double money;
+        public Inventory inventory;
+        public Recipe recipe;
 
         public Player()
         {
@@ -18,7 +19,14 @@ namespace LemonadeStand
             name = Console.ReadLine();
 
             money = 20.00;
+
             inventory = new Inventory();
+            inventory.cups.count = 0;
+            inventory.lemons.count = 0;
+            inventory.sugar.count = 0;
+            inventory.ice.count = 0;
+
+            recipe = new Recipe();
         }
 
 

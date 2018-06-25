@@ -20,13 +20,14 @@ namespace LemonadeStand
             recipe.ice.count = 4;
         }
 
-        private void DisplayRecipe()
+        public void DisplayRecipe()
         {
             Console.WriteLine(
                 "Lemons per pitcher: {0} \n" +
                 "Cups of Sugar per pitcher: {1} \n" +
                 "Ice cubes per cup: {2} \n",
                 recipe.lemons.count, recipe.sugar.count, recipe.ice.count);
+            Console.ReadLine();
         }
     }
 }

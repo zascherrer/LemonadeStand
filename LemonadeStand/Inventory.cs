@@ -23,7 +23,12 @@ namespace LemonadeStand
 
         public void DisplayInventory()
         {
-
+            Console.WriteLine("\n\n" +
+                "Cups: {0} \n" +
+                "Lemons: {1} \n" +
+                "Sugar: {2} \n" +
+                "Ice Cubes: {3} \n\n",
+                cups.count, lemons.count, sugar.count, ice.count);
         }
     }
 }

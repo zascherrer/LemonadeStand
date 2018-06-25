@@ -13,7 +13,7 @@ namespace LemonadeStand
         {
             name = "Lemon";
             canSpoil = true;
-            count = 0;
+            count = 15;
             price = 0.10;
             spoilageChance = 0.10;
         }

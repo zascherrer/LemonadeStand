@@ -8,16 +8,23 @@ namespace LemonadeStand
 {
     class Game
     {
-
+        Player playerOne;
+        Store store;
 
         public Game()
         {
+            Console.WriteLine("Welcome to Lemonade Stand,");
+            playerOne = new Player();
+
+            store = new Store();
 
         }
 
         public void RunGame()
         {
+            store.BuyItem(playerOne, new Cup());
 
+            Console.ReadLine();
         }
     }
 }

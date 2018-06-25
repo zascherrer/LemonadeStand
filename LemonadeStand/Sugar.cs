@@ -13,7 +13,7 @@ namespace LemonadeStand
         {
             name = "Sugar";
             canSpoil = false;
-            count = 0;
+            count = 10;
             price = 0.08;
         }
     }
