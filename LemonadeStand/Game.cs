@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         Player playerOne;
         Store store;
+        UserInterface ui;
 
         public Game()
         {
@@ -17,12 +18,13 @@ namespace LemonadeStand
             playerOne = new Player();
 
             store = new Store();
+            ui = new UserInterface();
 
         }
 
         public void RunGame()
         {
-            store.BuyItem(playerOne, new Cup());
+            ui.DayStartMenu(playerOne, store);
 
             Console.ReadLine();
         }
