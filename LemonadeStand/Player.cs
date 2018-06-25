@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         public string name;
         private double money;
+        private Inventory inventory;
 
         public Player()
         {
@@ -17,6 +18,7 @@ namespace LemonadeStand
             name = Console.ReadLine();
 
             money = 20.00;
+            inventory = new Inventory();
         }
 
 
