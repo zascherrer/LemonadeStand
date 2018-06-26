@@ -19,7 +19,7 @@ namespace LemonadeStand
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\n\n" +
+                Console.WriteLine("" +
                     "It is currently day X. \n" +
                     "The weather should be Y today. \n" +
                     "What would you like to do next? \n" +
@@ -34,7 +34,7 @@ namespace LemonadeStand
                 switch (userInput)
                 {
                     case "1":
-                        Console.WriteLine("\n\nYou have ${0} remaining. Your current inventory is: \n", player.money);
+                        Console.WriteLine("\n\nYou have ${0} remaining. Your current inventory is: \n", String.Format("{0:0.00}", player.money));
                         player.inventory.DisplayInventory();
                         break;
                     case "2":

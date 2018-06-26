@@ -83,6 +83,7 @@ namespace LemonadeStand
         private void FinalizeTransaction(Player player, string itemName, double price, int howMany)
         {
             player.money -= price;
+            player.money = Math.Round(player.money,2);
 
             switch (itemName)
             {
@@ -107,7 +108,7 @@ namespace LemonadeStand
 
         private void DisplayTransactionResults(Player player)
         {
-            Console.WriteLine("\n\nYou have ${0} remaining. Your current inventory is: \n", player.money);
+            Console.WriteLine("\n\nYou have ${0} remaining. Your current inventory is: \n", String.Format("{0:0.00}", player.money));
             player.inventory.DisplayInventory();
         }
 
