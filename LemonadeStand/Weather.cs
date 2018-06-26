@@ -9,7 +9,7 @@ namespace LemonadeStand
     class Weather
     {
         private int temperature;
-        private Random random;
+        public Random random;
         public string weatherEffect;
         public int Temperature
         {

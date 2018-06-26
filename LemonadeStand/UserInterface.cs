@@ -14,14 +14,14 @@ namespace LemonadeStand
 
         }
 
-        public void DayStartMenu(Player player, Store store, Recipe recipe)
+        public void DayStartMenu(Player player, Store store, Recipe recipe, Weather weather)
         {
             while (true)
             {
                 Console.Clear();
                 Console.WriteLine("" +
                     "It is currently day X. \n" +
-                    "The weather should be Y today. \n" +
+                    "It should be {0} degrees and {1} today. \n" +
                     "What would you like to do next? \n" +
                     " 1. Display Money and Inventory \n" +
                     " 2. Buy Cups \n" +
@@ -31,7 +31,8 @@ namespace LemonadeStand
                     " 6. Display Lemonade Recipe \n" +
                     " 7. Change Lemonade Recipe \n" +
                     " 8. Change Price per Cup \n" +
-                    " 0. Start Day! \n");
+                    " 0. Start Day! \n",
+                    weather.Temperature, weather.weatherEffect);
                 string userInput = Console.ReadLine();
 
                 switch (userInput)

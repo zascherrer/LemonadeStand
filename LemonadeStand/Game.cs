@@ -11,6 +11,8 @@ namespace LemonadeStand
         Player playerOne;
         Store store;
         UserInterface ui;
+        List<Day> days;
+        Weather weather;
 
         public Game()
         {
@@ -19,13 +21,17 @@ namespace LemonadeStand
 
             store = new Store();
             ui = new UserInterface();
-
+            days = new List<Day>();
+            weather = new Weather();
         }
 
         public void RunGame()
         {
             playerOne.soldOut = false;
-            ui.DayStartMenu(playerOne, store, playerOne.recipe);
+            playerOne.cupsSold = 0;
+
+            ui.DayStartMenu(playerOne, store, playerOne.recipe, weather);
+            days.Add(new Day(weather, playerOne, playerOne.recipe));
 
             Console.ReadLine();
         }

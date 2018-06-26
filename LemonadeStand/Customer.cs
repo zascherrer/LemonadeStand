@@ -16,14 +16,14 @@ namespace LemonadeStand
         private Random random;
         public Feedback feedback;
 
-        public Customer(Weather weather)
+        public Customer(Weather weather, Player player, Recipe lemonade, Random random)
         {
-            random = new Random();
+            this.random = random;
             feedback = new Feedback();
             
-            thirst = random.Next(0, 50);
+            thirst = random.Next(0, 60);
             SetPreferences(weather);
-
+            BuyLemonade(player, lemonade);
 
         }
 
@@ -74,6 +74,8 @@ namespace LemonadeStand
 
         private void SetThirst(Weather weather)
         {
+            thirst += weather.Temperature / 10;
+
             switch (weather.weatherEffect)
             {
                 case "Rain!":

@@ -14,6 +14,7 @@ namespace LemonadeStand
         public Recipe recipe;
         private Pitcher pitcher;
         public bool soldOut;
+        public int cupsSold;
 
         public Player()
         {
@@ -22,6 +23,7 @@ namespace LemonadeStand
 
             money = 20.00;
             soldOut = false;
+            cupsSold = 0;
 
             inventory = new Inventory();
             inventory.cups.count = 0;
@@ -36,12 +38,13 @@ namespace LemonadeStand
         public void SellLemonade()
         {
             money += recipe.price;
+            cupsSold++;
 
-            if(pitcher.cupsLeft == 0 && inventory.lemons.count > recipe.recipe.lemons.count && inventory.sugar.count > recipe.recipe.sugar.count)
+            if(pitcher.cupsLeft == 0 && inventory.lemons.count >= recipe.recipe.lemons.count && inventory.sugar.count >= recipe.recipe.sugar.count)
             {
                 RefillPitcher();
             }
-            else
+            else if(pitcher.cupsLeft == 0 && (inventory.lemons.count < recipe.recipe.lemons.count || inventory.sugar.count < recipe.recipe.sugar.count))
             {
                 soldOut = true;
             }
