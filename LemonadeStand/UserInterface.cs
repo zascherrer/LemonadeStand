@@ -40,35 +40,45 @@ namespace LemonadeStand
                     case "1":
                         Console.WriteLine("\n\nYou have ${0} remaining. Your current inventory is: \n", String.Format("{0:0.00}", player.money));
                         player.inventory.DisplayInventory();
+                        Console.ReadLine();
                         break;
                     case "2":
                         store.BuyItem(player, new Cup());
+                        Console.ReadLine();
                         break;
                     case "3":
                         store.BuyItem(player, new Lemon());
+                        Console.ReadLine();
                         break;
                     case "4":
                         store.BuyItem(player, new Sugar());
+                        Console.ReadLine();
                         break;
                     case "5":
                         store.BuyItem(player, new Ice());
+                        Console.ReadLine();
                         break;
                     case "6":
                         recipe.DisplayRecipe();
+                        Console.ReadLine();
                         break;
                     case "7":
                         recipe.ChangeRecipe();
+                        Console.ReadLine();
                         break;
                     case "8":
                         recipe.ChangePrice();
+                        Console.ReadLine();
                         break;
                     case "0":
                         return;
                     default:
+                        Console.WriteLine("\n\nYour input was invalid. Press Enter to return to the menu.\n\n");
+                        Console.ReadLine();
                         break;
                 }
+                
 
-                Console.ReadLine();
             }
         }
 

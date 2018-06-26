@@ -23,9 +23,11 @@ namespace LemonadeStand
             ui = new UserInterface();
             days = new List<Day>();
             weather = new Weather();
+
+            RunGame();
         }
 
-        public void RunGame()
+        private void RunGame()
         {
             while (days.Count < 7)
             {

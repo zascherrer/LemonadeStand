@@ -34,6 +34,8 @@ namespace LemonadeStand
             inventory.ice.count = 0;
 
             recipe = new Recipe();
+            recipe.price = 0.1;
+
             pitcher = new Pitcher();
         }
 
