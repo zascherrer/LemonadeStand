@@ -32,14 +32,23 @@ namespace LemonadeStand
 
         public void SetWeather()
         {
-            int weatherEffectInt = random.Next(1, 7);
-
             SetTemperature();
+            SetWeatherEffect();
+        }
+
+        private void SetTemperature()
+        {
+            temperature = random.Next(50, 101);
+        }
+
+        private void SetWeatherEffect()
+        {
+            int weatherEffectInt = random.Next(1, 7);
 
             switch (weatherEffectInt)
             {
                 case 1:
-                    weatherEffect = "Rain!";
+                    weatherEffect = "Rainy";
                     break;
                 case 2:
                     weatherEffect = "Foggy";
@@ -57,15 +66,46 @@ namespace LemonadeStand
                     weatherEffect = "Humid";
                     break;
                 default:
-                    weatherEffect = "Something went wrong in the Set Weather function";
+                    weatherEffect = "Something went wrong in the Set Weather Effect function";
                     break;
             }
 
         }
 
-        private void SetTemperature()
+        public void AlterWeather()
         {
-            temperature = random.Next(50, 101);
+            AlterTemperature();
+            AlterWeatherEffect();
+
+        }
+
+        private void AlterTemperature()
+        {
+            int temperatureChange = random.Next(0, 3);
+
+            if (temperatureChange == 0)
+            {
+                temperature -= 5;
+            }
+            else if (temperatureChange == 2)
+            {
+                temperature += 5;
+            }
+        }
+
+        private void AlterWeatherEffect()
+        {
+            int effectChange = random.Next(0, 3);
+
+            if(effectChange == 2)
+            {
+                SetWeatherEffect();
+            }
+        }
+
+        public void DisplayWeather()
+        {
+            Console.WriteLine("\n\nThe weather ended up being {0} degrees and {1} today.", temperature, weatherEffect);
         }
     }
 }

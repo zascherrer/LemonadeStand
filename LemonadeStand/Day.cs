@@ -21,6 +21,7 @@ namespace LemonadeStand
             feedbackCollected = new Feedback();
 
             AddCustomers(player, lemonade);
+            weather.DisplayWeather();
             DisplayProfits(player, lemonade);
             CollectFeedback();
             DisplayFeedback();
@@ -39,6 +40,8 @@ namespace LemonadeStand
         private void DisplayProfits(Player player, Recipe lemonade)
         {
             Console.WriteLine("\n\nYou sold {0} cups for a total of ${1}! \n\n", player.cupsSold, String.Format("{0:0.00}", lemonade.price * player.cupsSold));
+            Console.WriteLine("After expenses, you made a total of ${0} today. Your total profit so far is ${1}. \n\n",
+                String.Format("{0:0.00}", player.money - player.todaysStartingMoney), String.Format("{0:0.00}", player.money - 20));
         }
 
         private void CollectFeedback()

@@ -33,11 +33,13 @@ namespace LemonadeStand
                 playerOne.cupsSold = 0;
 
                 ui.DayStartMenu(playerOne, store, playerOne.recipe, weather, days);
+                weather.AlterWeather();
                 days.Add(new Day(weather, playerOne, playerOne.recipe));
 
                 Console.ReadLine();
 
                 weather.SetWeather();
+                playerOne.todaysStartingMoney = playerOne.money;
             }
 
             ui.EndGameMenu(playerOne, days);

@@ -78,7 +78,7 @@ namespace LemonadeStand
 
             switch (weather.weatherEffect)
             {
-                case "Rain!":
+                case "Rainy":
                     thirst -= 25;
                     break;
                 case "Foggy":

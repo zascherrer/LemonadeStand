@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         public string name;
         public double money;
+        public double todaysStartingMoney;
         public Inventory inventory;
         public Recipe recipe;
         private Pitcher pitcher;
@@ -22,6 +23,7 @@ namespace LemonadeStand
             name = Console.ReadLine();
 
             money = 20.00;
+            todaysStartingMoney = money;
             soldOut = false;
             cupsSold = 0;
 
@@ -39,12 +41,13 @@ namespace LemonadeStand
         {
             money += recipe.price;
             cupsSold++;
+            pitcher.cupsLeft--;
 
-            if(pitcher.cupsLeft == 0 && inventory.lemons.count >= recipe.recipe.lemons.count && inventory.sugar.count >= recipe.recipe.sugar.count)
+            if(pitcher.cupsLeft <= 0 && inventory.lemons.count >= recipe.recipe.lemons.count && inventory.sugar.count >= recipe.recipe.sugar.count)
             {
                 RefillPitcher();
             }
-            else if(pitcher.cupsLeft == 0 && (inventory.lemons.count < recipe.recipe.lemons.count || inventory.sugar.count < recipe.recipe.sugar.count))
+            else if(pitcher.cupsLeft <= 0 && (inventory.lemons.count < recipe.recipe.lemons.count || inventory.sugar.count < recipe.recipe.sugar.count))
             {
                 soldOut = true;
             }

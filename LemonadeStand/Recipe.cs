@@ -30,7 +30,6 @@ namespace LemonadeStand
                 "Ice cubes per cup: {2} \n" +
                 "You are selling it for: ${3} per cup \n",
                 recipe.lemons.count, recipe.sugar.count, recipe.ice.count, price);
-            Console.ReadLine();
         }
 
         public void ChangeRecipe()
