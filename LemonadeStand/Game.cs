@@ -27,12 +27,20 @@ namespace LemonadeStand
 
         public void RunGame()
         {
-            playerOne.soldOut = false;
-            playerOne.cupsSold = 0;
+            while (days.Count < 7)
+            {
+                playerOne.soldOut = false;
+                playerOne.cupsSold = 0;
 
-            ui.DayStartMenu(playerOne, store, playerOne.recipe, weather);
-            days.Add(new Day(weather, playerOne, playerOne.recipe));
+                ui.DayStartMenu(playerOne, store, playerOne.recipe, weather, days);
+                days.Add(new Day(weather, playerOne, playerOne.recipe));
 
+                Console.ReadLine();
+
+                weather.SetWeather();
+            }
+
+            ui.EndGameMenu(playerOne, days);
             Console.ReadLine();
         }
     }
