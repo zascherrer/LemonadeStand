@@ -21,8 +21,9 @@ namespace LemonadeStand
             this.random = random;
             feedback = new Feedback();
             
-            thirst = random.Next(0, 60);
+            thirst = random.Next(0, 50);
             SetPreferences(weather);
+            AdjustThirstByPreferences(lemonade);
             BuyLemonade(player, lemonade);
 
         }
@@ -98,6 +99,24 @@ namespace LemonadeStand
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void AdjustThirstByPreferences(Recipe lemonade)
+        {
+            if(lemonade.recipe.lemons.count == lemonsPreferred)
+            {
+                thirst += 5;
+            }
+
+            if(lemonade.recipe.sugar.count == sugarPreferred)
+            {
+                thirst += 5;
+            }
+
+            if(lemonade.recipe.ice.count == icePreferred)
+            {
+                thirst += 5;
             }
         }
 
