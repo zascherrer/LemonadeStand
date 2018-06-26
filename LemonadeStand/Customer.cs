@@ -111,9 +111,10 @@ namespace LemonadeStand
             int chanceToBuy = random.Next(0, 100);
             bool willBuy;
 
-            if(chanceToBuy <= thirst)
+            willBuy = EvaluatePrice(lemonade.price);
+
+            if (chanceToBuy <= thirst)
             {
-                willBuy = EvaluatePrice(lemonade.price);
                 if (willBuy && !player.soldOut)
                 {
                     player.SellLemonade();
@@ -125,9 +126,9 @@ namespace LemonadeStand
         private bool EvaluatePrice(double price)
         {
             int thirstThreshold = 35;
-            double priceThreshold = pricePreferred + 0.25;
+            double upperPriceThreshold = pricePreferred + 0.25;
 
-            if (price > priceThreshold)
+            if (price > upperPriceThreshold)
             {
                 return false;
             }
@@ -142,6 +143,11 @@ namespace LemonadeStand
                 {
                     return false;
                 }
+            }
+            else if (price < pricePreferred)
+            {
+                thirst += Convert.ToInt32((pricePreferred - price) * 100);
+                return true;
             }
             else
             {
