@@ -24,7 +24,8 @@ namespace LemonadeStand
 
         public void RunGame()
         {
-            ui.DayStartMenu(playerOne, store);
+            playerOne.soldOut = false;
+            ui.DayStartMenu(playerOne, store, playerOne.recipe);
 
             Console.ReadLine();
         }

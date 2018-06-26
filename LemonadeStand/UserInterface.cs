@@ -14,7 +14,7 @@ namespace LemonadeStand
 
         }
 
-        public void DayStartMenu(Player player, Store store)
+        public void DayStartMenu(Player player, Store store, Recipe recipe)
         {
             while (true)
             {
@@ -28,6 +28,9 @@ namespace LemonadeStand
                     " 3. Buy Lemons \n" +
                     " 4. Buy Sugar \n" +
                     " 5. Buy Ice Cubes \n" +
+                    " 6. Display Lemonade Recipe \n" +
+                    " 7. Change Lemonade Recipe \n" +
+                    " 8. Change Price per Cup \n" +
                     " 0. Start Day! \n");
                 string userInput = Console.ReadLine();
 
@@ -48,6 +51,15 @@ namespace LemonadeStand
                         break;
                     case "5":
                         store.BuyItem(player, new Ice());
+                        break;
+                    case "6":
+                        recipe.DisplayRecipe();
+                        break;
+                    case "7":
+                        recipe.ChangeRecipe();
+                        break;
+                    case "8":
+                        recipe.ChangePrice();
                         break;
                     case "0":
                         return;

@@ -26,7 +26,7 @@ namespace LemonadeStand
 
             for (int i = 0; i < howManyCustomers; i++)
             {
-                customers.Add(new Customer());
+                customers.Add(new Customer(weather));
             }
         }
 

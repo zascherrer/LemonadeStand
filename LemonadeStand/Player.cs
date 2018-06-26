@@ -12,6 +12,8 @@ namespace LemonadeStand
         public double money;
         public Inventory inventory;
         public Recipe recipe;
+        private Pitcher pitcher;
+        public bool soldOut;
 
         public Player()
         {
@@ -19,6 +21,7 @@ namespace LemonadeStand
             name = Console.ReadLine();
 
             money = 20.00;
+            soldOut = false;
 
             inventory = new Inventory();
             inventory.cups.count = 0;
@@ -27,8 +30,43 @@ namespace LemonadeStand
             inventory.ice.count = 0;
 
             recipe = new Recipe();
+            pitcher = new Pitcher();
         }
 
+        public void SellLemonade()
+        {
+            money += recipe.price;
 
+            if(pitcher.cupsLeft == 0 && inventory.lemons.count > recipe.recipe.lemons.count && inventory.sugar.count > recipe.recipe.sugar.count)
+            {
+                RefillPitcher();
+            }
+            else
+            {
+                soldOut = true;
+            }
+
+            inventory.cups.count -= recipe.recipe.cups.count;
+            inventory.ice.count -= recipe.recipe.ice.count;
+
+            if(inventory.cups.count <= 0)
+            {
+                inventory.cups.count = 0;
+                soldOut = true;
+            }
+            if(inventory.ice.count <= 0)
+            {
+                inventory.ice.count = 0;
+                soldOut = true;
+            }
+        }
+
+        private void RefillPitcher()
+        {
+            pitcher.cupsLeft = pitcher.maximumCups;
+
+            inventory.lemons.count -= recipe.recipe.lemons.count;
+            inventory.sugar.count -= recipe.recipe.sugar.count;
+        }
     }
 }
