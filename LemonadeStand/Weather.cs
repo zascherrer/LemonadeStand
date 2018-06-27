@@ -27,7 +27,7 @@ namespace LemonadeStand
         {
             random = new Random();
 
-            SetWeather();
+            SetRealWeather();
         }
 
         public void SetWeather()
@@ -106,6 +106,51 @@ namespace LemonadeStand
         public void DisplayWeather()
         {
             Console.WriteLine("\n\nThe weather ended up being {0} degrees and {1} today.", temperature, weatherEffect);
+        }
+
+        public async void SetRealWeather()
+        {
+            int[] results = await RealWeatherCall.GetRealWeather();
+
+            int cloudPercentage = results[0];
+            temperature = ConvertKelvinToFahrenheit(results[1]);
+            int humidity = results[2];
+            
+            SetRealWeatherEffect(cloudPercentage, humidity);
+        }
+
+        private int ConvertKelvinToFahrenheit(int kelvin)
+        {
+            return Convert.ToInt32((9.0 / 5.0) * (kelvin - 273) + 32);
+        }
+
+        private void SetRealWeatherEffect(int cloudPercentage, int humidity)
+        {
+            
+            if (humidity >= 95)
+            {
+                weatherEffect = "Rainy";
+            }
+            else if (cloudPercentage >= 90)
+            {
+                weatherEffect = "Overcast";
+            }
+            else if(humidity >= 80)
+            {
+                weatherEffect = "Foggy";
+            }
+            else if (cloudPercentage >= 30)
+            {
+                weatherEffect = "Cloudy";
+            }
+            else if(humidity >= 40)
+            {
+                weatherEffect = "Humid";
+            }
+            else
+            {
+                weatherEffect = "Sunny";
+            }
         }
     }
 }

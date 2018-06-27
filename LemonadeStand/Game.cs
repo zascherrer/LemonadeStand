@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace LemonadeStand
 {
@@ -31,8 +34,16 @@ namespace LemonadeStand
             RunGame();
         }
 
+        private async Task TestWeatherAPI()
+        {
+            int[] results = await RealWeatherCall.GetRealWeather();
+            Console.WriteLine(results);
+            Console.ReadLine();
+        }
+
         private void InstantiatePlayers()
         {
+
             int userInput = 1;
 
             Console.WriteLine("\nHow many players would you like to play with? \n");
@@ -65,7 +76,7 @@ namespace LemonadeStand
             }
             catch(Exception e)
             {
-                Console.WriteLine("Exception caught: {0}", e);
+                Console.WriteLine("Exception caught: {0}", e.Message);
             }
 
             return daysUntilGameOver;
@@ -73,6 +84,7 @@ namespace LemonadeStand
 
         private void RunGame()
         {
+
             while (dayCounter < daysUntilGameOver)
             {
                 dayCounter++;
