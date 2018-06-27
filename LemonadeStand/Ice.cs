@@ -15,7 +15,7 @@ namespace LemonadeStand
             canSpoil = true;
             count = 100;
             price = 0.01;
-            spoilageChance = 1.00;
+            spoilageChance = 0.90;
         }
     }
 }

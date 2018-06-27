@@ -60,6 +60,9 @@ namespace LemonadeStand
                 case "3":
                     FinalizeTransaction(player, item.name, superBulkPriceTotal, item.count * superBulkCountModifier);
                     break;
+                case "4":
+                    Console.WriteLine("\n\nPress Enter to return to the Day menu.");
+                    return;
             }
         }
 

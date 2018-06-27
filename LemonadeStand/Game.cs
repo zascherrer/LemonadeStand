@@ -37,6 +37,7 @@ namespace LemonadeStand
                 ui.DayStartMenu(playerOne, store, playerOne.recipe, weather, days);
                 weather.AlterWeather();
                 days.Add(new Day(weather, playerOne, playerOne.recipe));
+                playerOne.inventory.SpoilInventory(weather.random);
 
                 Console.ReadLine();
 

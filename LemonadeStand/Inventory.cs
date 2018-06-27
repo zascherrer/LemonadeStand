@@ -30,5 +30,13 @@ namespace LemonadeStand
                 "Ice Cubes: {3} \n\n",
                 cups.count, lemons.count, sugar.count, ice.count);
         }
+
+        public void SpoilInventory(Random random)
+        {
+            cups.SpoilItem(random);
+            lemons.SpoilItem(random);
+            sugar.SpoilItem(random);
+            ice.SpoilItem(random);
+        }
     }
 }
