@@ -9,17 +9,12 @@ namespace LemonadeStand
     class UserInterface
     {
 
-        public UserInterface()
-        {
-
-        }
-
-        public void DayStartMenu(Player player, Store store, Recipe recipe, Weather weather, List<Day> days)
+        public void DayStartMenu(Player player, Store store, Recipe recipe, Weather weather, int days)
         {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("" +
+                Console.WriteLine("{3}'s Lemonade Stand: \n\n" +
                     "It is currently day {0}. \n" +
                     "It should be {1} degrees and {2} today. \n" +
                     "What would you like to do next? \n" +
@@ -32,7 +27,7 @@ namespace LemonadeStand
                     " 7. Change Lemonade Recipe \n" +
                     " 8. Change Price per Cup \n" +
                     " 0. Start Day! \n",
-                    days.Count+1, weather.Temperature, weather.weatherEffect);
+                    days, weather.Temperature, weather.weatherEffect, player.name);
                 string userInput = Console.ReadLine();
 
                 switch (userInput)
@@ -82,14 +77,14 @@ namespace LemonadeStand
             }
         }
 
-        public void EndGameMenu(Player player, List<Day> days)
+        public void EndGameMenu(Player player, int days)
         {
-            Console.Clear();
+            
             Console.WriteLine("" +
-                "Game over! \n\n" +
-                "You made a total of ${0} over {1} days. \n" +
-                "That's an average of ${2} per day!",
-                String.Format("{0:0.00}", player.money - 20), days.Count, String.Format("{0:0.00}", (player.money - 20) / days.Count));
+                "{3} made a total of ${0} over {1} days. \n" +
+                "That's an average of ${2} per day!\n\n",
+                String.Format("{0:0.00}", player.money - 20), days, String.Format("{0:0.00}", (player.money - 20) / days), player.name);
+            
         }
     }
 }

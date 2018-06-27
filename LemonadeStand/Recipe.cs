@@ -50,7 +50,14 @@ namespace LemonadeStand
         public void ChangePrice()
         {
             Console.WriteLine("\n\nWhat would you like to change the price to, in cents?");
-            priceInCents = int.Parse(Console.ReadLine());
+            try
+            {
+                priceInCents = int.Parse(Console.ReadLine());
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Exception caught: {0}", e);
+            }
             price = priceInCents / 100.0;
 
             Console.WriteLine("\n\nYour current recipe and price is: \n");
