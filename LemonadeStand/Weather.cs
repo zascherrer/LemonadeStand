@@ -27,7 +27,18 @@ namespace LemonadeStand
         {
             random = new Random();
 
-            SetRealWeather();
+            Console.WriteLine("\nWould you like to play this game with the real weather in Milwaukee or with randomly generated weather? \n" +
+                " 1. Real weather \n" +
+                " 2. Random weather \n");
+            string userInput = Console.ReadLine();
+            if(userInput == "1")
+            {
+                SetRealWeather();
+            }
+            else
+            {
+                SetWeather();
+            }
         }
 
         public void SetWeather()
